@@ -32,7 +32,9 @@ def main():
     t.gen_text(" \x1b[96mwires chewed\x1b[0m", 6, contin=True)
     t.gen_text("\x1b[96mOK meow mafia on standby\x1b[0m", 7)
 
+
     t.gen_prompt(8)
+    t.clone_frame(10)
     prompt_col = t.curr_col
     t.toggle_show_cursor(True)
     t.gen_typing_text("\x1b[91mlogi", 8, contin=True)
@@ -41,6 +43,7 @@ def main():
     t.gen_text(" \x1b[91mlogin: Authentication Failed", 8)
 
     t.gen_prompt(9)
+    t.clone_frame(10)
     prompt_col = t.curr_col
     t.toggle_show_cursor(True)
     t.gen_typing_text("\x1b[91mdeploy kitty-hac", 9, contin=True)
@@ -91,7 +94,8 @@ def main():
     )
     t.gen_text(f"Last login: {time_now} on tty1", 5)
 
-    t.gen_prompt(6, count=5)
+    t.gen_prompt(6)
+    t.clone_frame(10)
     prompt_col = t.curr_col
     t.toggle_show_cursor(True)
     t.gen_typing_text("\x1b[91mclea", 6, contin=True)
@@ -152,7 +156,7 @@ def main():
 
     t.set_font(FONT_FILE_BITMAP)
     t.gen_text(user_details_lines, 2, 35, count=5, contin=True)
-    t.clone_frame(30)
+    t.clone_frame(60)
     
     t.save_frame("screenshot.png")
     t.gen_gif()
