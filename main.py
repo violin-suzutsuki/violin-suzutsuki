@@ -64,13 +64,12 @@ def main():
     t.gen_text("\x1b[92mlogin\x1b[0m", cur_row, count=3, contin=True)
     t.clear_frame()
 
-
-
-    t.clear_frame()
+    t.gen_text("Initiating Login Sequence ", 1, contin=True)
+    t.gen_typing_text(".....", 1, contin=True)
     t.gen_text("\x1b[96m", 1, count=0, contin=True)  # buffer to be removed
     t.set_font(FONT_FILE_LOGO, 66)
     # t.toggle_show_cursor(True)
-    os_logo_text = "OS"
+    os_logo_text = "meow"
     mid_row = (t.num_rows + 1) // 2
     mid_col = (t.num_cols - len(os_logo_text) + 1) // 2
     effect_lines = gifos.effects.text_scramble_effect_lines(
@@ -103,11 +102,16 @@ def main():
     user_details_lines = f"""
     \x1b[30;101mviolin@GitHub\x1b[0m
     --------------
-    \x1b[96mOS:     \x1b[93mArch Linux\x1b[0m
-    \x1b[96mhost:   \x1b[93mThe Earth \x1b[94m#60.14 AU\x1b[0m
-    \x1b[96mKernel: \x1b[93mInformation Technology/Computer Science \x1b[94m#IT/CS\x1b[0m
-    \x1b[96mUptime: \x1b[93mtoo long\x1b[0m
-    \x1b[96mIDE:    \x1b[93mHelix\x1b[0m
+    \x1b[96mOS:      \x1b[93mmeow OS (beta [alpha] - early access)\x1b[0m
+    \x1b[96mhost:    \x1b[93mthe void\x1b[0m
+    \x1b[96mkernel:  \x1b[93mramen and pizza\x1b[0m
+    \x1b[96muptime:  \x1b[93mtoo long\x1b[0m
+    \x1b[96mIDE:     \x1b[93mnotepad++\x1b[0m
+
+    \x1b[30;101mcontact:\x1b[0m
+    --------------
+    \x1b[96mwebsite: \x1b[93mkyaru.cloud\x1b[0m
+    \x1b[96mdiscord: \x1b[93mrusthater62 \x1b[94m#visual basic\x1b[0m
     """
     t.gen_prompt(1)
     prompt_col = t.curr_col
@@ -148,6 +152,7 @@ def main():
 
     t.set_font(FONT_FILE_BITMAP)
     t.gen_text(user_details_lines, 2, 35, count=5, contin=True)
+    t.clone_frame(30)
     
     t.save_frame("screenshot.png")
     t.gen_gif()
